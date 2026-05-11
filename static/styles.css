@@ -318,6 +318,18 @@ body {
     background-color: #0f172a;
 }
 
+.gantt-table td.frozen-idx-1, .gantt-table th.frozen-idx-1 {
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.gantt-table td.frozen-idx-2, .gantt-table th.frozen-idx-2 {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .date-col {
     width: 40px;
     min-width: 40px;
