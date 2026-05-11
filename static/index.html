@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProPlan Scheduler - Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css">
+    <!-- Echarts for Gantt representation -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo-area">
+                <div class="logo-icon">🗓️</div>
+                <h1>ProPlan</h1>
+            </div>
+            
+            <div class="upload-section">
+                <h3>Cargar Datos</h3>
+                <p>Sube tu archivo PROGRAMADOR DE MAZAS.xlsm para generar el cronograma.</p>
+                <div class="file-upload-wrapper">
+                    <input type="file" id="fileInput" accept=".xlsx,.xlsm" class="file-input" />
+                    <button class="btn btn-primary" id="uploadBtn">
+                        <span class="btn-icon">📁</span> Seleccionar Archivo
+                    </button>
+                    <span id="fileName" class="file-name">Ningún archivo seleccionado</span>
+                </div>
+                
+                <button class="btn btn-success" id="processBtn" disabled>
+                    <span class="btn-icon">🚀</span> Procesar Planificación
+                </button>
+            </div>
+
+            <div class="metrics-section">
+                <h3>Resumen</h3>
+                <div class="metric-card">
+                    <span class="metric-label">Total OPs</span>
+                    <span class="metric-value" id="metricOps">-</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-label">Máquinas Ocupadas</span>
+                    <span class="metric-value" id="metricMachines">-</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-nav">
+                <h2>Diagrama de Gantt Interactivo</h2>
+                <div class="nav-actions">
+                    <button class="btn btn-outline" id="downloadPdfBtn" disabled>
+                        <span class="btn-icon">📄</span> Exportar PDF
+                    </button>
+                    <button class="btn btn-outline" id="downloadBtn" disabled>
+                        <span class="btn-icon">⬇️</span> Exportar Excel
+                    </button>
+                </div>
+            </header>
+
+            <div class="gantt-container" id="ganttChart">
+                <div class="empty-state">
+                    <div class="empty-icon">📊</div>
+                    <h3>Esperando datos</h3>
+                    <p>Sube tu archivo de Excel para visualizar el diagrama de Gantt.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <div class="loader-overlay" id="loaderOverlay">
+        <div class="spinner"></div>
+        <p>Procesando algoritmo de optimización...</p>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
